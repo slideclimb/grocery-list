@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Groceries(), // Set the home route.
+      home: Groceries(), // Set the home route (page).
       debugShowCheckedModeBanner: false, // Disable debug banner.
     );
   }
