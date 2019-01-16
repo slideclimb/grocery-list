@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_list/grocery.dart';
+import 'package:grocery_list/translations.dart';
 
 /// Page with the grocery list.
 class Groceries extends StatefulWidget {
@@ -17,7 +18,7 @@ class GroceriesState extends State<Groceries> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
-          title: const Text('Boodschappen'),
+          title: Text(Translations.of(context).appTitle),
           actions: <Widget>[
             // Button to clear the grocery list.
             new IconButton(
@@ -46,7 +47,7 @@ class GroceriesState extends State<Groceries> {
                 title: TextField(
               autofocus: true,
               onSubmitted: _addGrocery,
-              decoration: InputDecoration(hintText: 'nieuwe boodschap'),
+              decoration: InputDecoration(hintText: Translations.of(context).newGrocery),
             ));
           }
         }));
