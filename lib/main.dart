@@ -4,10 +4,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:grocery_list/translations.dart';
 import 'package:grocery_list/localizations_delegate.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(GroceryApp());
 
 /// Application class.
-class MyApp extends StatelessWidget {
+class GroceryApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
