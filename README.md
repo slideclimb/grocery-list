@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/slideclimb/grocery-list.svg?branch=master)](https://travis-ci.com/slideclimb/grocery-list)
 # Grocery List
 
 Keep track of your family's groceries.
