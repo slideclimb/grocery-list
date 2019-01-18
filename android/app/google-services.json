@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "204516212152",
+    "firebase_url": "https://grocery-list-9cc07.firebaseio.com",
+    "project_id": "grocery-list-9cc07",
+    "storage_bucket": "grocery-list-9cc07.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204516212152:android:8ed1f0a825e3639c",
+        "android_client_info": {
+          "package_name": "com.abby.grocerylist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204516212152-57fou23fprrsc7grqre8qm1bg1am9q9e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb0giTiiXZZrDmKAFqNIIXvDWN0MRcNpE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
