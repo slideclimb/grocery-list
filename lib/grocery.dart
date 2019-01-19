@@ -1,7 +1,7 @@
 /// A grocery has a name and knows whether it's done or note.
 class Grocery {
   bool done;
-  String name;
+  String item;
 
-  Grocery(this.done, this.name);
+  Grocery(this.done, this.item);
 }
