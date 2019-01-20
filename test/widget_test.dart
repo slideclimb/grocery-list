@@ -11,18 +11,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:grocery_list/main.dart';
 
 void main() {
-  testWidgets('appelflap', (WidgetTester tester) async {
+  testWidgets('delete icon present', (WidgetTester tester) async {
 
     // Build our app and trigger a frame.
     await tester.pumpWidget(GroceryApp());
     // Wait for the keyboard to come up.
-    await tester.pump(Duration(microseconds: 500));
-    await tester.enterText(find.byType(TextField), 'appelflap\n');
-    await tester.pump();
-    // Verify that 'appelflap' is still on the screen.
-    expect(find.text('appelflap'), findsOneWidget);
-    // Verify by that there is a ListTile on the screen.
-    // This implies that 'appelflap' must be on the tile.
-    expect(find.byType(CheckboxListTile), findsOneWidget);
+    expect(find.byIcon(Icons.delete), findsOneWidget);
   });
 }

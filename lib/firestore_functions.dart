@@ -13,9 +13,7 @@ void addToFirestore(String text) => Firestore.instance
     .document()
     .setData({'item': text, 'done': false});
 
-/// Clears the list of groceries and redraws the ui.
-///
-/// TODO clear firebase list.
+/// Clears the list of groceries in firestore.
 void clearGroceries() {
   Firestore.instance.collection('groceries').getDocuments().then((snapshot) {
     for (DocumentSnapshot ds in snapshot.documents) {
