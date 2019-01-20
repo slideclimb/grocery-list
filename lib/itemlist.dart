@@ -11,19 +11,19 @@ class ItemList extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance.collection('groceries').snapshots(),
-      builder:
-          (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (snapshot.hasError)
-          return new Text('Error: ${snapshot.error}');
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) return new Text('Error: ${snapshot.error}');
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return new Text('Loading...');
+            return new CircularProgressIndicator();
           default:
             // Wrap the [ListView] in an [Expanded] so it takes all available
             // vertical space.
-            return new Expanded(child: new ListView(
-              children: snapshot.data.documents
-                  .map((DocumentSnapshot document) {
+            return new Expanded(
+                child: new Scrollbar(
+                    child: new ListView(
+              children:
+                  snapshot.data.documents.map((DocumentSnapshot document) {
                 return new CheckboxListTile(
                   title: new Text(document['item']),
                   value: document['done'],
@@ -32,7 +32,7 @@ class ItemList extends StatelessWidget {
                   },
                 );
               }).toList(),
-            ));
+            )));
         }
       },
     );

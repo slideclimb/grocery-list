@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_list/add_grocery_field.dart';
 import 'package:grocery_list/itemlist.dart';
 import 'package:grocery_list/i18n/translations.dart';
 import 'package:grocery_list/firestore_functions.dart';
@@ -11,6 +12,7 @@ class GroceriesView extends StatefulWidget {
 
 /// State of [GroceriesView].
 class GroceriesViewState extends State<GroceriesView> {
+
   /// Build the page.
   @override
   Widget build(BuildContext context) {
@@ -28,13 +30,7 @@ class GroceriesViewState extends State<GroceriesView> {
         // synchronised (it updates the ui when the database changes).
         body: new Column(children: <Widget>[
           ItemList(),
-          TextField(
-            // TODO Clear text field after submission, auto focus.
-            // TODO Padding, background colour.
-            decoration:
-                InputDecoration(hintText: Translations.of(context).newGrocery),
-            onSubmitted: addToFirestore,
-          )
+          groceryTextField(context),
         ]));
   }
 }
