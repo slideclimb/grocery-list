@@ -11,7 +11,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:grocery_list/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('appelflap', (WidgetTester tester) async {
 
     // Build our app and trigger a frame.
     await tester.pumpWidget(GroceryApp());
@@ -23,6 +23,6 @@ void main() {
     expect(find.text('appelflap'), findsOneWidget);
     // Verify by that there is a ListTile on the screen.
     // This implies that 'appelflap' must be on the tile.
-    expect(find.byType(ListTile), findsOneWidget);
+    expect(find.byType(CheckboxListTile), findsOneWidget);
   });
 }
