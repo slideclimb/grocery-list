@@ -27,6 +27,10 @@ class GroceryApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate
       ],
       supportedLocales: [const Locale('en', 'US'), const Locale('nl')],
+      theme: ThemeData(
+        primaryColor: Colors.lightGreen,
+        accentColor: Colors.pinkAccent,
+      ),
     );
   }
 }
