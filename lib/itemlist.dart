@@ -21,17 +21,17 @@ class ItemList extends StatelessWidget {
             // vertical space.
             return new Expanded(
                 child: new Scrollbar(
-                    child: new ListView(
-              children:
-                  snapshot.data.documents.map((DocumentSnapshot document) {
-                return new CheckboxListTile(
-                  title: new Text(document['item']),
-                  value: document['done'],
-                  onChanged: (value) {
-                    updateFirestore(document, value);
-                  },
-                );
-              }).toList(),
+                    child: new ListView.builder(
+                      itemCount: snapshot.data.documents.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        final document = snapshot.data.documents[index];
+                        return new CheckboxListTile(
+                            value: document['done'],
+                            title: new Text(document['item']),
+                            onChanged: (value) {
+                              updateFirestore(document, value);
+                            });
+                      },
             )));
         }
       },
