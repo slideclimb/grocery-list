@@ -16,6 +16,8 @@ Card groceryTextField(BuildContext context) {
           child: TextField(
             focusNode: _focusNode,
             controller: _controller,
+            cursorColor: Theme.of(context).primaryColor,
+            cursorWidth: 1.0,
             decoration:
                 InputDecoration(hintText: Translations.of(context).newGrocery),
             onSubmitted: (text) {
