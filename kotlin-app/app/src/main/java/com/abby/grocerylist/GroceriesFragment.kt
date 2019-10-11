@@ -28,13 +28,14 @@ class GroceriesFragment : Fragment() {
         val db = FirebaseFirestore.getInstance()
 
         // Query the database for the groceries.
-        val groceriesQuery = db.collection("groceries")
+        val groceriesCollection = db.collection("groceries")
 
         // Add a listener to the query.
-        groceriesQuery.addSnapshotListener { snapshot, _ ->
+        groceriesCollection.addSnapshotListener { snapshot, _ ->
             // Put the returned groceries in a list.
             val groceries = snapshot?.map {
                 Grocery(
+                    it.id,
                     it.data["done"].toString().toBoolean(),
                     it.data["item"].toString()
                 )
