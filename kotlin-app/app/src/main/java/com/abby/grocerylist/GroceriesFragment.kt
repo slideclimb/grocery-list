@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.groceries_fragment.*
@@ -41,11 +42,16 @@ class GroceriesFragment : Fragment() {
                 )
             } ?: listOf()
 
+            val groceriesAdapter = GroceriesAdapter(groceries)
+
             // Display the groceries.
             groceries_list?.apply {
                 layoutManager = LinearLayoutManager(activity)
-                adapter = GroceriesAdapter(groceries)
+                adapter = groceriesAdapter
             }
+
+            val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback(context!!, groceriesAdapter))
+            itemTouchHelper.attachToRecyclerView(groceries_list)
         }
 
     }
