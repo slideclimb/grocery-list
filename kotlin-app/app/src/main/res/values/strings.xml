@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">GroceryList</string>
+    <string name="app_name">Groceries</string>
+    <string name="add_grocery_hint">Type here to add another grocery</string>
 </resources>

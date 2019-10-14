@@ -1,5 +1,6 @@
 package com.abby.grocerylist
 
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 
@@ -17,4 +18,12 @@ fun FragmentManager.replace(layout: Int, fragment: Fragment) {
 
     // Finish the transaction.
     transaction.commit()
+}
+
+
+fun EditText.on(actionId: Int, func: () -> Unit) {
+    setOnEditorActionListener { textView, receivedActionId, keyEvent ->
+        if (actionId == receivedActionId) func()
+        true
+    }
 }
