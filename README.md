@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.com/slideclimb/grocery-list.svg?branch=master)](https://travis-ci.com/slideclimb/grocery-list)
 # Grocery List
 
+**This app is currently being converted to Kotlin, keeping the Flutter project for future reference.**
+
 Keep track of your family's groceries.
 
 This is a project to try out [Flutter](https://flutter.io).
