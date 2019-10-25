@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.groceries_fragment.*
@@ -42,16 +41,19 @@ class GroceriesFragment : Fragment() {
                 )
             } ?: listOf()
 
-            val groceriesAdapter = GroceriesAdapter(groceries)
-
-            // Display the groceries.
+            // Display the groceries in two lists. The first list contains the to do items, and the
+            // second list contains the done items.
             groceries_list?.apply {
                 layoutManager = LinearLayoutManager(activity)
-                adapter = groceriesAdapter
+                adapter = GroceriesAdapter(groceries.filter { !it.done })
+            }
+            groceries_list_done.apply {
+                layoutManager = LinearLayoutManager(activity)
+                adapter = GroceriesAdapter(groceries.filter { it.done })
             }
 
-            val itemTouchHelper = ItemTouchHelper(SwipeToDeleteCallback(context!!, groceriesAdapter))
-            itemTouchHelper.attachToRecyclerView(groceries_list)
+            // Delete all the done items when clicking that button.
+            delete_done_button.setOnClickListener { groceries.filter { it.done }.forEach { it.delete() } }
         }
 
     }

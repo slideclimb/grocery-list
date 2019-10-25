@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * List adapter for a list of groceries.
  */
-class GroceriesAdapter(val groceries: List<Grocery>) : RecyclerView.Adapter<GroceryViewHolder>() {
+class GroceriesAdapter(private val groceries: List<Grocery>) : RecyclerView.Adapter<GroceryViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroceryViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return GroceryViewHolder(inflater, parent)
