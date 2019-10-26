@@ -1,9 +1,8 @@
 package com.abby.grocerylist
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
@@ -53,7 +52,9 @@ class GroceriesFragment : Fragment() {
             }
 
             // Delete all the done items when clicking that button.
-            delete_done_button.setOnClickListener { groceries.filter { it.done }.forEach { it.delete() } }
+            delete_done_button.setOnClickListener {
+                groceries.filter { it.done }.forEach { it.delete() }
+            }
         }
 
     }
