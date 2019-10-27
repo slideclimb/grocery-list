@@ -32,7 +32,20 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.delete_all -> {
-                // TODO delete all items
+                // Get all groceries and delete them one by one.
+                val db = FirebaseFirestore.getInstance()
+                val groceriesCollection = db.collection("groceries")
+                groceriesCollection.get().addOnSuccessListener { snapshot ->
+                    // Put the returned groceries in a list.
+                    val groceries = snapshot?.map {
+                        Grocery(
+                            it.id,
+                            it.data["done"].toString().toBoolean(),
+                            it.data["item"].toString()
+                        )
+                    } ?: listOf()
+                    groceries.forEach { it.delete() }
+                }
                 Toast.makeText(this, "deleting", Toast.LENGTH_SHORT).show()
                 true
             }
