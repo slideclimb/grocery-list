@@ -1,11 +1,11 @@
 package com.abby.grocerylist
 
 import android.os.Bundle
-import android.view.*
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.groceries_fragment.*
 
 /**
@@ -23,14 +23,8 @@ class GroceriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Obtain a reference to the firebase database.
-        val db = FirebaseFirestore.getInstance()
-
-        // Query the database for the groceries.
-        val groceriesCollection = db.collection("groceries")
-
         // Add a listener to the query.
-        groceriesCollection.addSnapshotListener { snapshot, _ ->
+        FirebaseHelper().collection.addSnapshotListener { snapshot, _ ->
             // Put the returned groceries in a list.
             val groceries = snapshot?.map {
                 Grocery(

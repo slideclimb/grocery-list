@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.replace(R.id.fragment_container, GroceriesFragment())
     }
 
+    /**
+     * Inflate our custom menu when creating the options menu.
+     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return true
@@ -32,21 +35,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.delete_all -> {
-                // Get all groceries and delete them one by one.
-                val db = FirebaseFirestore.getInstance()
-                val groceriesCollection = db.collection("groceries")
-                groceriesCollection.get().addOnSuccessListener { snapshot ->
-                    // Put the returned groceries in a list.
-                    val groceries = snapshot?.map {
-                        Grocery(
-                            it.id,
-                            it.data["done"].toString().toBoolean(),
-                            it.data["item"].toString()
-                        )
-                    } ?: listOf()
-                    groceries.forEach { it.delete() }
-                }
-                Toast.makeText(this, "deleting", Toast.LENGTH_SHORT).show()
+                FirebaseHelper().deleteAll()
                 true
             }
             else -> super.onOptionsItemSelected(item)
