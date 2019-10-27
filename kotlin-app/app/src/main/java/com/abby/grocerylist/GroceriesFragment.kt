@@ -36,10 +36,14 @@ class GroceriesFragment : Fragment() {
 
             // Display the groceries in two lists. The first list contains the to do items, and the
             // second list contains the done items.
-            groceries_list?.apply {
+            groceries_list.apply {
                 layoutManager = LinearLayoutManager(activity)
                 adapter = GroceriesAdapter(groceries.filter { !it.done })
             }
+
+            // Hide the 'done' header when there are no done groceries.
+            done_header.visibility = if (groceries.none { it.done }) View.INVISIBLE else View.VISIBLE
+
             groceries_list_done.apply {
                 layoutManager = LinearLayoutManager(activity)
                 adapter = GroceriesAdapter(groceries.filter { it.done })
