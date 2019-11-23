@@ -4,8 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.groceries_fragment.*
 
 /**
@@ -34,10 +39,16 @@ class GroceriesFragment : Fragment() {
                 )
             } ?: listOf()
 
+            // This can only be one change at a time, right?
+            snapshot?.documentChanges?.forEach {
+                // Move item to its new location with an animation...
+//                Toast.makeText(context, it.document.data.toString(), Toast.LENGTH_SHORT).show()
+            }
+
             // Display the groceries in two lists. The first list contains the to do items, and the
             // second list contains the done items.
             groceries_list.apply {
-                layoutManager = LinearLayoutManager(activity)
+                layoutManager = LinearLayoutManager(activity!!.applicationContext)
                 adapter = GroceriesAdapter(groceries.filter { !it.done })
             }
 
@@ -53,6 +64,7 @@ class GroceriesFragment : Fragment() {
             delete_done_button.setOnClickListener {
                 groceries.filter { it.done }.forEach { it.delete() }
             }
+
         }
 
     }

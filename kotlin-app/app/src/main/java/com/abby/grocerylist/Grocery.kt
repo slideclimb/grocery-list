@@ -15,7 +15,7 @@ class Grocery(
      * Add this grocery to the database.
      */
     fun store() {
-        FirebaseHelper().collection.document().set(this)
+        FirebaseHelper().collection.document(System.currentTimeMillis().toString()).set(this)
     }
 
     /**

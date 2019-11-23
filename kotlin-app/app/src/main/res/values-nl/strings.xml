@@ -3,4 +3,5 @@
     <string name="app_name">Boodschappen</string>
     <string name="add_grocery_hint">Type hier om een boodschap toe te voegen</string>
     <string name="done">gedaan</string>
+    <string name="delete">verwijder</string>
 </resources>
