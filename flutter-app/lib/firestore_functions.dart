@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 /// Updates the done property of a grocery in the firestore database.
-void updateFirestore(DocumentSnapshot document, bool value) {
-  Firestore.instance.runTransaction((transaction) async {
-    await transaction.update(document.reference, {'done': value});
-  });
+void updateFirestore(DocumentSnapshot document, bool value) async {
+    await Firestore.instance
+        .collection('groceries')
+        .document(document.documentID)
+        .updateData({'done': value});
 }
 
 /// Adds a new grocery to the firestore database.

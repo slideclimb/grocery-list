@@ -10,7 +10,6 @@ Card groceryTextField(BuildContext context) {
   final TextEditingController _controller = new TextEditingController();
 
   return Card(
-//    color: Colors.grey[300],
       child: Padding(
           padding: EdgeInsets.all(16.0),
           child: TextField(

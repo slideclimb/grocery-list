@@ -6,6 +6,7 @@ import 'package:grocery_list/i18n/localizations_delegate.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   Firestore.instance.settings(timestampsInSnapshotsEnabled: true);
   runApp(GroceryApp());
 }
